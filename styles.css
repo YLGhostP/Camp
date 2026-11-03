@@ -29,7 +29,7 @@ nav a { font-size: 0.78rem; font-weight: 700; text-decoration: none; }
 nav a:hover, nav a:focus-visible { color: var(--yellow); }
 
 .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; color: white; background: linear-gradient(145deg, #252a71 0%, #5146c8 43%, #b55fbd 76%, #ee8297 100%); isolation: isolate; }
-.hero-layer, .hero-content, .hero-photo-wrap, .hero-count { transform: translate3d(0, var(--parallax-y, 0), 0); will-change: transform; }
+.hero-layer, .hero-content, .hero-photo-wrap { transform: translate3d(0, var(--parallax-y, 0), 0); will-change: transform; }
 .hero-glow { position: absolute; z-index: -2; border-radius: 50%; filter: blur(5px); }
 .glow-one { width: min(60vw, 700px); aspect-ratio: 1; left: -18vw; top: -18vw; background: rgba(78,198,248,0.28); }
 .glow-two { width: min(44vw, 520px); aspect-ratio: 1; right: -8vw; bottom: -12vw; background: rgba(255,219,119,0.26); }
@@ -41,7 +41,7 @@ nav a:hover, nav a:focus-visible { color: var(--yellow); }
 .eyebrow { margin: 0 0 1rem; color: var(--pink); font-size: 0.69rem; font-weight: 800; letter-spacing: 0.23em; }
 .hero .eyebrow { color: var(--yellow); }
 h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; line-height: 1.18; }
-h1 { position: relative; z-index: 2; max-width: 8ch; font-size: clamp(5rem, 14vw, 11rem); letter-spacing: -0.08em; text-shadow: 0 18px 50px rgba(25,20,81,0.24); }
+h1 { position: relative; z-index: 2; width: fit-content; max-width: 100%; white-space: nowrap; font-size: clamp(3.5rem, 13vw, 10.5rem); letter-spacing: -0.08em; text-shadow: 0 18px 50px rgba(25,20,81,0.24); }
 h2 { font-size: clamp(2.6rem, 5.5vw, 5rem); letter-spacing: -0.05em; }
 .hero-subtitle { position: relative; z-index: 3; max-width: 40rem; margin: 2rem 0 0; color: rgba(255,255,255,0.88); font-size: clamp(1rem, 1.8vw, 1.25rem); font-weight: 500; line-height: 1.9; }
 .scroll-cue { position: relative; z-index: 4; display: inline-flex; gap: 1rem; align-items: center; margin-top: 3rem; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(255,255,255,0.55); text-decoration: none; font-size: 0.8rem; font-weight: 700; }
@@ -49,9 +49,6 @@ h2 { font-size: clamp(2.6rem, 5.5vw, 5rem); letter-spacing: -0.05em; }
 @keyframes nudge { 50% { transform: translateY(5px); } }
 .hero-photo-wrap { position: absolute; z-index: 1; top: 15%; right: -3%; width: min(48vw, 640px); padding: 0.65rem; border-radius: 2rem; background: rgba(255,255,255,0.18); box-shadow: 0 40px 100px rgba(24,21,77,0.28); transform: translate3d(0, var(--parallax-y, 0), 0) rotate(3deg); backdrop-filter: blur(9px); }
 .hero-photo-wrap img { width: 100%; aspect-ratio: 5 / 4; border-radius: 1.5rem; object-fit: cover; opacity: 0.82; }
-.hero-count { position: absolute; z-index: 5; right: 5%; bottom: 8%; display: grid; padding: 1.1rem 1.5rem; border: 1px solid rgba(255,255,255,0.35); border-radius: 1rem; background: rgba(25,27,86,0.22); backdrop-filter: blur(14px); }
-.hero-count span { font-family: var(--display); font-size: 3rem; line-height: 1; }
-.hero-count small { margin-top: 0.4rem; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.2em; }
 
 .section-pad { padding: 8rem max(1.5rem, calc((100vw - 1180px) / 2)); }
 .participants { background: linear-gradient(180deg, #faf9ff 0%, #edf2ff 50%, #fff8f5 100%); }
@@ -67,7 +64,6 @@ h2 { font-size: clamp(2.6rem, 5.5vw, 5rem); letter-spacing: -0.05em; }
 .participant-portrait img { width: 100%; height: 110%; object-fit: cover; will-change: transform; }
 .participant-portrait span { position: absolute; z-index: 2; right: 0.85rem; bottom: 0.45rem; color: rgba(255,255,255,0.9); font-family: var(--display); font-size: clamp(2.8rem, 5vw, 5.2rem); line-height: 1; }
 .participant-copy { min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: clamp(1.1rem, 2.7vw, 2.5rem); overflow-wrap: anywhere; }
-.participant-label { display: block; margin-bottom: 1rem; color: var(--pink); font-size: clamp(0.56rem, 0.8vw, 0.68rem); font-weight: 800; letter-spacing: clamp(0.08em, 0.3vw, 0.18em); overflow-wrap: anywhere; }
 .participant-copy h3 { max-width: 100%; font-size: clamp(1.9rem, 3.5vw, 3.65rem); letter-spacing: -0.055em; overflow-wrap: anywhere; }
 .participant-copy p { max-width: 100%; margin: 1.25rem 0; color: var(--muted); font-size: clamp(0.78rem, 1.05vw, 1rem); line-height: 1.85; text-wrap: pretty; overflow-wrap: anywhere; }
 .participant-copy i { display: block; width: clamp(2.5rem, 5vw, 4rem); height: 3px; border-radius: 999px; background: linear-gradient(90deg, var(--indigo), var(--pink)); }
@@ -98,7 +94,7 @@ footer strong { color: white; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-layer, .hero-content, .hero-photo-wrap, .hero-count { transform: none; }
+  .hero-layer, .hero-content, .hero-photo-wrap { transform: none; }
   .hero-photo-wrap { transform: rotate(3deg); }
   .scroll-cue i, .photo-track { animation: none; }
   .photo-track { flex-wrap: wrap; width: auto; padding: 0 1rem; }
@@ -127,7 +123,6 @@ footer strong { color: white; }
   .participant-card { grid-template-columns: minmax(120px, 0.82fr) minmax(0, 1.18fr); min-height: 0; height: min(42svh, 370px); }
   .participant-portrait { height: 100%; }
   .participant-copy { padding: clamp(0.85rem, 4vw, 1.35rem); }
-  .participant-label { margin-bottom: 0.55rem; font-size: clamp(0.5rem, 2vw, 0.6rem); letter-spacing: 0.08em; }
   .participant-copy h3 { font-size: clamp(1.5rem, 7vw, 2.25rem); }
   .participant-copy p { margin: 0.65rem 0; font-size: clamp(0.68rem, 2.65vw, 0.84rem); line-height: 1.6; }
   .participant-portrait span { right: 0.5rem; bottom: 0.25rem; font-size: clamp(2.4rem, 14vw, 3.8rem); }
@@ -140,12 +135,10 @@ footer strong { color: white; }
   nav a { font-size: 0.68rem; }
   .hero { min-height: 100svh; }
   .hero-content { width: calc(100% - 2rem); padding: 7rem 0 3.5rem; }
-  h1 { font-size: clamp(4.8rem, 25vw, 7rem); }
+  h1 { font-size: clamp(2.8rem, 20vw, 6.5rem); }
   h2 { font-size: clamp(2.45rem, 12vw, 3.5rem); }
   .hero-subtitle { max-width: 22rem; font-size: 0.95rem; line-height: 1.8; }
   .hero-photo-wrap { top: 13%; right: -40%; width: 118vw; }
-  .hero-count { right: 1rem; bottom: 1.2rem; padding: 0.7rem 1rem; }
-  .hero-count span { font-size: 2rem; }
   .scroll-cue { margin-top: 2rem; }
   .section-pad { padding: 5rem 1rem; }
   .participants-intro { padding-bottom: 2rem; }

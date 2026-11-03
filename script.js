@@ -35,7 +35,6 @@ function renderParticipant(person, index) {
         <span aria-hidden="true">${number}</span>
       </figure>
       <div class="participant-copy">
-        <span class="participant-label">PARTICIPANT ${number}</span>
         <h3>${escapeHtml(name)}</h3>
         <p>${escapeHtml(person.intro ?? "這裡可以放一段簡單介紹。")}</p>
         <i aria-hidden="true"></i>
@@ -52,7 +51,6 @@ function renderSite(data) {
   setText("[data-site-kicker]", site.kicker ?? "FELLOWSHIP CAMP");
   setText("[data-site-title]", site.title ?? "逃離日常");
   setText("[data-site-subtitle]", site.subtitle ?? "多認識一個人，多跨出一步，多留下一段回憶，一起玩，也一起成為更靠近的團契");
-  setText("[data-participant-count]", participants.length);
   setText("[data-current-year]", new Date().getFullYear());
 
   document.querySelector("[data-site-cover]").src = safeImagePath(site.cover, "img/cover.svg");
