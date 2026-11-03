@@ -4,17 +4,17 @@
 
 ## 快速修改
 
-主要文字、兩天行程、跑馬燈、金句、照片清單和成員姓名都在 `content.js`。
+主要文字、參加者照片／姓名／介紹，以及活動照片清單都在 `data.json`。
 
 1. 把照片放入 `img/`。
-2. 在 `content.js` 將 `cover` 或 `gallery` 裡的圖片路徑改成新檔名。
-3. 同一檔案內可直接修改營會名稱、日期、地點、行程、回顧文案和成員姓名。
+2. 在 `data.json` 將 `photo`、`cover` 或 `activityPhotos` 裡的圖片路徑改成新檔名。
+3. 每位參加者使用 `photo`、`name`、`intro` 三個欄位，可自行增加或刪除整筆資料。
 
 建議照片：JPG 或 WebP、長邊 1600–2400 px，每張約 0.3–1.5 MB。封面建議橫式 5:4，照片牆建議橫式 3:2 或 4:3。
 
 ## 本機預覽
 
-可直接開啟 `index.html`，或在此資料夾執行：
+網站會讀取 `data.json`，因此請在此資料夾啟動本機伺服器（不要直接雙擊 `index.html`）：
 
 ```powershell
 python -m http.server 8000
