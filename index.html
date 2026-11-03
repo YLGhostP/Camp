@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="一段值得收藏的營會時光：活動回顧、照片與參加成員。" />
-    <meta name="theme-color" content="#f4efe6" />
-    <title>一起走過的夏天｜營會回顧</title>
+    <meta name="description" content="逃離日常凝聚營：兩天一夜青年旅舍行程、活動回顧與參加夥伴。" />
+    <meta name="theme-color" content="#4c4de1" />
+    <title>逃離日常｜凝聚營回顧</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="content.js" defer></script>
     <script src="script.js" defer></script>
@@ -18,94 +18,107 @@
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="回到頁首">
-        <span class="brand-mark" aria-hidden="true">✦</span>
-        <span data-camp-short-title>營會回顧</span>
+        <span class="brand-mark" aria-hidden="true">♥</span>
+        <span data-camp-short-title>逃離日常</span>
       </a>
       <nav aria-label="主要導覽">
-        <a href="#story">我們的故事</a>
+        <a href="#story">故事</a>
+        <a href="#itinerary">行程</a>
         <a href="#gallery">照片</a>
-        <a href="#members">成員</a>
+        <a href="#members">夥伴</a>
       </nav>
     </header>
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-orb orb-one" aria-hidden="true"></div>
+        <div class="hero-orb orb-two" aria-hidden="true"></div>
         <div class="hero-copy reveal">
-          <p class="eyebrow" data-camp-kicker>2026 · SUMMER CAMP</p>
-          <h1 id="hero-title" data-camp-title>一起走過的<br />夏天</h1>
-          <p class="hero-lede" data-camp-intro>
-            三天兩夜，我們把陌生變成默契，把笑聲留在山林，也把這段同行的日子收進彼此的記憶裡。
-          </p>
+          <p class="eyebrow" data-camp-kicker>FELLOWSHIP CAMP · 2026</p>
+          <h1 id="hero-title" data-camp-title>逃離<br />日常</h1>
+          <p class="hero-lede" data-camp-intro>兩天一夜，從城市尋寶到攀岩挑戰，在青年旅舍裡一起吃、一起聊。</p>
           <div class="hero-meta" aria-label="活動資訊">
-            <span data-camp-date>2026.07.18 — 07.20</span>
+            <span data-camp-date>2026 · TWO DAYS, ONE NIGHT</span>
             <span class="meta-dot" aria-hidden="true"></span>
-            <span data-camp-location>山嵐營地</span>
+            <span data-camp-location>青年旅舍</span>
           </div>
-          <a class="text-link" href="#gallery">翻開回憶 <span aria-hidden="true">↓</span></a>
+          <a class="primary-link" href="#itinerary">看看我們去哪裡 <span aria-hidden="true">↘</span></a>
         </div>
 
-        <div class="hero-visual reveal" aria-label="營會主照片">
-          <div class="sun" aria-hidden="true"></div>
-          <figure class="hero-photo photo-frame">
-            <img data-camp-cover src="img/cover.svg" alt="營會成員在戶外的合照預留位置" />
+        <div class="hero-visual reveal" aria-label="凝聚營主照片">
+          <div class="fellowship-word" aria-hidden="true">Fellowship</div>
+          <figure class="hero-photo">
+            <img data-camp-cover src="img/cover.svg" alt="逃離日常凝聚營主照片預留位置" />
           </figure>
-          <span class="tape tape-one" aria-hidden="true"></span>
-          <p class="hand-note" data-camp-note>See you<br />next summer!</p>
-          <svg class="doodle" viewBox="0 0 120 70" aria-hidden="true">
-            <path d="M6 58c19-31 43-43 67-34 17 6 18 25 3 28-13 2-19-13-7-21 15-10 36 0 45 18" />
-          </svg>
+          <p class="hand-note" data-camp-note>Fellowship<br />makes us closer.</p>
+          <span class="sticker sticker-one" aria-hidden="true">TWO DAYS<br />ONE STORY</span>
         </div>
+      </section>
+
+      <section class="marquee" aria-label="營會活動跑馬燈">
+        <div class="marquee-track" data-marquee></div>
       </section>
 
       <section class="story section-pad" id="story" aria-labelledby="story-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">THE STORY</p>
-          <h2 id="story-title">短短幾天，<br />成為很長的記憶。</h2>
+          <p class="eyebrow">WHY WE GO</p>
+          <h2 id="story-title">離開熟悉的日常，<br />走近真實的彼此。</h2>
         </div>
         <div class="story-body reveal">
-          <p data-camp-story>
-            從第一天的自我介紹，到最後一晚捨不得結束的分享，我們一起完成任務、一起煮飯，也在星空下聊了很多平常沒機會說的話。這不是一場盛大的旅行，卻是一段剛剛好的相遇。
-          </p>
+          <p data-camp-story>我們不是來打卡一張漂亮照片，而是把手機收進口袋一點點，真的走進彼此的日常。</p>
           <dl class="stats" aria-label="營會數字">
-            <div><dt data-stat-days>3</dt><dd>天同行</dd></div>
+            <div><dt data-stat-days>2</dt><dd>天同行</dd></div>
             <div><dt data-stat-members>12</dt><dd>位夥伴</dd></div>
             <div><dt>∞</dt><dd>個回憶</dd></div>
           </dl>
         </div>
       </section>
 
+      <section class="itinerary section-pad" id="itinerary" aria-labelledby="itinerary-title">
+        <div class="itinerary-heading reveal">
+          <p class="eyebrow">TWO-DAY ROUTE</p>
+          <h2 id="itinerary-title">青年旅舍<br />小旅行</h2>
+          <p>行程是路線，真正讓旅程有意思的是同行的人。</p>
+        </div>
+        <div class="day-grid" data-itinerary></div>
+      </section>
+
       <section class="gallery section-pad" id="gallery" aria-labelledby="gallery-title">
         <div class="gallery-heading reveal">
-          <div>
-            <p class="eyebrow">MEMORY ALBUM</p>
-            <h2 id="gallery-title">記憶選集</h2>
-          </div>
-          <p>點選照片，回到那一刻。</p>
+          <div><p class="eyebrow">MEMORY ALBUM</p><h2 id="gallery-title">回憶底片</h2></div>
+          <p>點一下照片，回到那個瞬間。</p>
         </div>
         <div class="gallery-grid" data-gallery aria-live="polite"></div>
       </section>
 
-      <section class="quote-band reveal" aria-label="營會回顧引言">
-        <p>「最好的風景，是我們都在。」</p>
-        <span>— Camp notes, 2026</span>
+      <section class="quotes section-pad" aria-labelledby="quotes-title">
+        <div class="quotes-heading reveal">
+          <p class="eyebrow">CAMP QUOTES</p>
+          <h2 id="quotes-title">回家後，<br />還會拿來講的話。</h2>
+        </div>
+        <div class="quote-grid" data-quotes></div>
       </section>
 
       <section class="members section-pad" id="members" aria-labelledby="members-title">
         <div class="members-heading reveal">
-          <p class="eyebrow">OUR PEOPLE</p>
-          <h2 id="members-title">這次，一起出發的人</h2>
-          <p>每個名字，都是故事裡不可少的一頁。</p>
+          <p class="eyebrow">OUR FELLOWSHIP</p>
+          <h2 id="members-title">一起逃離日常的人</h2>
+          <p>名牌只留下名字，讓故事在見面之後慢慢發生。</p>
         </div>
         <ul class="member-list" data-members aria-live="polite"></ul>
+      </section>
+
+      <section class="closing">
+        <div class="closing-heart" aria-hidden="true">♥</div>
+        <p class="eyebrow">SEE YOU NEXT TIME</p>
+        <h2>不是結束，<br />只是回到日常。</h2>
+        <p>但這次，我們帶了更多人一起回去。</p>
       </section>
     </main>
 
     <footer>
-      <div>
-        <span class="brand-mark" aria-hidden="true">✦</span>
-        <strong data-camp-short-title>營會回顧</strong>
-      </div>
-      <p>Made with memories · <span data-current-year>2026</span></p>
+      <div><span class="brand-mark" aria-hidden="true">♥</span><strong data-camp-short-title>逃離日常</strong></div>
+      <p>Fellowship Camp · <span data-current-year>2026</span></p>
       <a href="#top">回到頁首 ↑</a>
     </footer>
 
@@ -113,10 +126,7 @@
       <button class="lightbox-close" type="button" data-lightbox-close aria-label="關閉照片">×</button>
       <figure>
         <img data-lightbox-image src="" alt="" />
-        <figcaption>
-          <strong data-lightbox-title></strong>
-          <span data-lightbox-caption></span>
-        </figcaption>
+        <figcaption><strong data-lightbox-title></strong><span data-lightbox-caption></span></figcaption>
       </figure>
     </dialog>
   </body>
