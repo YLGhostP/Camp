@@ -17,40 +17,50 @@ function setText(selector, value) {
   });
 }
 
+function groupInPairs(items) {
+  const pairs = [];
+  for (let index = 0; index < items.length; index += 2) {
+    pairs.push(items.slice(index, index + 2));
+  }
+  return pairs;
+}
+
+function renderParticipant(person, index) {
+  const number = String(index + 1).padStart(2, "0");
+  const name = person.name ?? "尚未填寫姓名";
+  return `
+    <article class="participant-card">
+      <figure class="participant-portrait">
+        <img src="${escapeHtml(safeImagePath(person.photo, "img/person-placeholder.svg"))}" alt="${escapeHtml(name)}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
+        <span aria-hidden="true">${number}</span>
+      </figure>
+      <div class="participant-copy">
+        <span class="participant-label">PARTICIPANT ${number}</span>
+        <h3>${escapeHtml(name)}</h3>
+        <p>${escapeHtml(person.intro ?? "這裡可以放一段簡單介紹。")}</p>
+        <i aria-hidden="true"></i>
+      </div>
+    </article>
+  `;
+}
+
 function renderSite(data) {
-  const fallbackPortrait = "img/person-placeholder.svg";
   const site = data.site ?? {};
   const participants = Array.isArray(data.participants) ? data.participants : [];
   const activityPhotos = Array.isArray(data.activityPhotos) ? data.activityPhotos : [];
 
   setText("[data-site-kicker]", site.kicker ?? "FELLOWSHIP CAMP");
   setText("[data-site-title]", site.title ?? "逃離日常");
-  setText("[data-site-subtitle]", site.subtitle ?? "多認識一個人，多跨出一步，多留下一段回憶。一起玩，也一起成為更靠近的團契。");
+  setText("[data-site-subtitle]", site.subtitle ?? "多認識一個人，多跨出一步，多留下一段回憶，一起玩，也一起成為更靠近的團契");
   setText("[data-participant-count]", participants.length);
   setText("[data-current-year]", new Date().getFullYear());
 
-  const cover = document.querySelector("[data-site-cover]");
-  cover.src = safeImagePath(site.cover, "img/cover.svg");
+  document.querySelector("[data-site-cover]").src = safeImagePath(site.cover, "img/cover.svg");
 
-  const participantRoot = document.querySelector("[data-participants]");
-  participantRoot.innerHTML = participants.map((person, index) => {
-    const number = String(index + 1).padStart(2, "0");
-    return `
-      <article class="participant-story ${index % 2 ? "is-reversed" : ""}">
-        <div class="portrait-frame reveal">
-          <div class="portrait-parallax" data-photo-parallax>
-            <img src="${escapeHtml(safeImagePath(person.photo, fallbackPortrait))}" alt="${escapeHtml(person.name ?? "參加者")}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
-          </div>
-          <span class="portrait-number" aria-hidden="true">${number}</span>
-        </div>
-        <div class="participant-copy reveal">
-          <span class="participant-label">PARTICIPANT ${number}</span>
-          <h3>${escapeHtml(person.name ?? "尚未填寫姓名")}</h3>
-          <p>${escapeHtml(person.intro ?? "這裡可以放一段簡單介紹。")}</p>
-          <span class="participant-line" aria-hidden="true"></span>
-        </div>
-      </article>
-    `;
+  let participantIndex = 0;
+  document.querySelector("[data-participants]").innerHTML = groupInPairs(participants).map((pair, pairIndex) => {
+    const cards = pair.map((person) => renderParticipant(person, participantIndex++)).join("");
+    return `<section class="participant-pair" aria-label="第 ${pairIndex + 1} 組參加者">${cards}</section>`;
   }).join("");
 
   const repeatedPhotos = [...activityPhotos, ...activityPhotos];
@@ -62,67 +72,140 @@ function renderSite(data) {
   `).join("");
 }
 
-function setupReveal() {
-  const elements = document.querySelectorAll(".reveal");
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    elements.forEach((element) => element.classList.add("is-visible"));
-    return;
-  }
+function setupGsapAnimations() {
+  if (!window.gsap || !window.ScrollTrigger) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.14 });
-  elements.forEach((element) => observer.observe(element));
-}
+  gsap.registerPlugin(ScrollTrigger);
+  const media = gsap.matchMedia();
 
-function setupParallax() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  media.add(
+    {
+      desktop: "(min-width: 901px)",
+      compact: "(max-width: 900px)",
+      reduceMotion: "(prefers-reduced-motion: reduce)"
+    },
+    (context) => {
+      const { desktop, reduceMotion } = context.conditions;
 
-  const heroLayers = [...document.querySelectorAll("[data-depth]")];
-  const portraits = [...document.querySelectorAll("[data-photo-parallax]")];
-  let ticking = false;
+      if (reduceMotion) {
+        gsap.set(".participant-card, .hero-content > *", { clearProps: "all" });
+        return;
+      }
 
-  const update = () => {
-    const scrollTop = window.scrollY;
-    heroLayers.forEach((layer) => {
-      const depth = Number(layer.dataset.depth) || 0;
-      layer.style.setProperty("--parallax-y", `${scrollTop * depth}px`);
-    });
+      gsap.from(".hero-content > *", {
+        autoAlpha: 0,
+        y: 34,
+        duration: 0.9,
+        stagger: 0.09,
+        ease: "power3.out"
+      });
 
-    const viewportCenter = window.innerHeight / 2;
-    const strength = window.innerWidth < 700 ? 0.035 : 0.07;
-    portraits.forEach((portrait) => {
-      const rect = portrait.parentElement.getBoundingClientRect();
-      const distance = rect.top + rect.height / 2 - viewportCenter;
-      const offset = Math.max(-55, Math.min(55, distance * strength));
-      portrait.style.setProperty("--portrait-y", `${offset}px`);
-    });
-    ticking = false;
-  };
+      gsap.to(".hero-photo-wrap", {
+        yPercent: desktop ? 18 : 8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1
+        }
+      });
 
-  const requestUpdate = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  };
+      gsap.to(".hero-content", {
+        yPercent: desktop ? 10 : 5,
+        autoAlpha: 0.35,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom 20%",
+          scrub: 0.8
+        }
+      });
 
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  window.addEventListener("resize", requestUpdate, { passive: true });
-  update();
+      gsap.from(".participants-intro > *", {
+        autoAlpha: 0,
+        y: 44,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".participants-intro",
+          start: "top 78%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      gsap.utils.toArray(".participant-pair").forEach((pair) => {
+        const cards = gsap.utils.toArray(".participant-card", pair);
+        const portraits = gsap.utils.toArray(".participant-portrait img", pair);
+
+        gsap.set(cards, { transformOrigin: "50% 55%" });
+
+        const pairTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: pair,
+            start: "top 92%",
+            end: "bottom 8%",
+            scrub: 0.75
+          }
+        });
+
+        pairTimeline
+          .fromTo(
+            cards,
+            { autoAlpha: 0, y: desktop ? 90 : 45, scale: 0.965 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.34, stagger: 0.06, ease: "none" }
+          )
+          .to(cards, { autoAlpha: 0.28, y: desktop ? -70 : -35, scale: 0.97, duration: 0.28, stagger: 0.04, ease: "none" }, 0.72);
+
+        gsap.fromTo(
+          portraits,
+          { yPercent: -5 },
+          {
+            yPercent: 5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: pair,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.9
+            }
+          }
+        );
+      });
+
+      gsap.from(".memories-heading > *", {
+        autoAlpha: 0,
+        y: 40,
+        duration: 0.75,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".memories-heading",
+          start: "top 78%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }
+  );
+
+  const images = [...document.images];
+  const ready = images.map((image) => {
+    if (image.complete) return Promise.resolve();
+    if (typeof image.decode === "function") return image.decode().catch(() => undefined);
+    return new Promise((resolve) => image.addEventListener("load", resolve, { once: true }));
+  });
+  Promise.all(ready).then(() => ScrollTrigger.refresh());
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 
 async function init() {
   try {
     const response = await fetch("data.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    renderSite(data);
-    setupReveal();
-    setupParallax();
+    renderSite(await response.json());
+    setupGsapAnimations();
   } catch (error) {
     console.error("Unable to load data.json", error);
     document.querySelector("[data-load-error]").hidden = false;
