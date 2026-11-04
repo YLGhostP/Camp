@@ -6,25 +6,92 @@
     "cover": "img/cover.svg"
   },
   "participants": [
-    { "photo": "img/person-placeholder.svg", "name": "林小晴", "intro": "總是第一個注意到大家需要什麼，也很會把陌生的氣氛變得自在。" },
-    { "photo": "img/person-placeholder.svg", "name": "陳子安", "intro": "負責把天馬行空的點子變成真的，迷路時也能笑著說是支線探索。" },
-    { "photo": "img/person-placeholder.svg", "name": "王以樂", "intro": "喜歡記住旅程裡的小細節，讓每個平凡瞬間都有被收藏的理由。" },
-    { "photo": "img/person-placeholder.svg", "name": "張庭瑋", "intro": "鏡頭後面最安靜的人，卻總能留下大家笑得最自然的那一秒。" },
-    { "photo": "img/person-placeholder.svg", "name": "李佳恩", "intro": "願意先跨出第一步，也總會回頭問身旁的人要不要一起。" },
-    { "photo": "img/person-placeholder.svg", "name": "黃柏宇", "intro": "攀岩時最會提供情緒價值，無論還有多遠都會說快到了。" },
-    { "photo": "img/person-placeholder.svg", "name": "吳心妤", "intro": "擅長用一個問題打開話題，讓夜裡的聊天比預想中更長。" },
-    { "photo": "img/person-placeholder.svg", "name": "周品澤", "intro": "看起來慢熟，但熟了以後，常常是整團笑聲的來源。" },
-    { "photo": "img/person-placeholder.svg", "name": "許語彤", "intro": "把每一次合作都當作認識彼此的機會，也很樂意聽別人的故事。" },
-    { "photo": "img/person-placeholder.svg", "name": "蔡承翰", "intro": "城市尋寶時可靠的方向感，偶爾也願意陪大家繞一點遠路。" },
-    { "photo": "img/person-placeholder.svg", "name": "鄭羽柔", "intro": "溫柔但不害怕挑戰，總能在緊張的時候讓大家安心一點。" },
-    { "photo": "img/person-placeholder.svg", "name": "劉冠廷", "intro": "願意嘗試沒做過的事，也把這份勇氣分享給同行的每一個人。" }
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "Melissa",
+      "intro": "總是第一個注意到大家需要什麼，也很會把陌生的氣氛變得自在。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "羅采沛",
+      "intro": "負責把天馬行空的點子變成真的，迷路時也能笑著說是支線探索。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "胡文超",
+      "intro": "喜歡記住旅程裡的小細節，讓每個平凡瞬間都有被收藏的理由。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "陳定榮",
+      "intro": "鏡頭後面最安靜的人，卻總能留下大家笑得最自然的那一秒。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "汪咨成",
+      "intro": "願意先跨出第一步，也總會回頭問身旁的人要不要一起。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "郭鈺淳",
+      "intro": "攀岩時最會提供情緒價值，無論還有多遠都會說快到了。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "林芷帆",
+      "intro": "擅長用一個問題打開話題，讓夜裡的聊天比預想中更長。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "宋宜先",
+      "intro": "看起來慢熟，但熟了以後，常常是整團笑聲的來源。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "陳品叡",
+      "intro": "把每一次合作都當作認識彼此的機會，也很樂意聽別人的故事。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "江昶叡",
+      "intro": "城市尋寶時可靠的方向感，偶爾也願意陪大家繞一點遠路。"
+    },
+    {
+      "photo": "img/person-placeholder.svg",
+      "name": "楊又霖",
+      "intro": "溫柔但不害怕挑戰，總能在緊張的時候讓大家安心一點。"
+    }
   ],
   "activityPhotos": [
-    { "src": "img/memory-01.svg", "alt": "大家集合準備出發", "caption": "集合，出發" },
-    { "src": "img/memory-02.svg", "alt": "團隊進行城市尋寶", "caption": "城市尋寶" },
-    { "src": "img/memory-03.svg", "alt": "大家抵達青年旅舍", "caption": "今晚住這裡" },
-    { "src": "img/memory-04.svg", "alt": "夜晚的團契聊天時間", "caption": "深夜談心" },
-    { "src": "img/memory-05.svg", "alt": "參加者一起挑戰攀岩", "caption": "再跨出一步" },
-    { "src": "img/memory-06.svg", "alt": "活動結束前的大合照", "caption": "我們下次見" }
+    {
+      "src": "img/memory-01.svg",
+      "alt": "大家集合準備出發",
+      "caption": "集合，出發"
+    },
+    {
+      "src": "img/memory-02.svg",
+      "alt": "團隊進行城市尋寶",
+      "caption": "城市尋寶"
+    },
+    {
+      "src": "img/memory-03.svg",
+      "alt": "大家抵達青年旅舍",
+      "caption": "今晚住這裡"
+    },
+    {
+      "src": "img/memory-04.svg",
+      "alt": "夜晚的團契聊天時間",
+      "caption": "深夜談心"
+    },
+    {
+      "src": "img/memory-05.svg",
+      "alt": "參加者一起挑戰攀岩",
+      "caption": "再跨出一步"
+    },
+    {
+      "src": "img/memory-06.svg",
+      "alt": "活動結束前的大合照",
+      "caption": "我們下次見"
+    }
   ]
 }
