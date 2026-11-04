@@ -67,7 +67,6 @@ h2 { font-size: clamp(2.6rem, 5.5vw, 5rem); letter-spacing: -0.05em; }
 .participant-copy h3 { max-width: 100%; font-size: clamp(1.9rem, 3.5vw, 3.65rem); letter-spacing: -0.055em; overflow-wrap: anywhere; }
 .participant-copy p { max-width: 100%; margin: 1.25rem 0; color: var(--muted); font-size: clamp(0.78rem, 1.05vw, 1rem); line-height: 1.85; text-wrap: pretty; overflow-wrap: anywhere; }
 .participant-copy i { display: block; width: clamp(2.5rem, 5vw, 4rem); height: 3px; border-radius: 999px; background: linear-gradient(90deg, var(--indigo), var(--pink)); }
-.participant-pair:nth-child(even) .participant-card:first-child .participant-portrait { order: 2; }
 .participant-pair:nth-child(3n) .participant-card:last-child { border-radius: 32% 1.2rem 1.2rem 1.2rem; }
 .load-error { margin: 0; padding: 5rem 1.5rem; text-align: center; color: #a13243; }
 
@@ -106,7 +105,6 @@ footer strong { color: white; }
   .participant-portrait { height: clamp(240px, 38vh, 390px); }
   .participant-copy { padding: clamp(1rem, 2.4vw, 1.8rem); }
   .participant-copy h3 { font-size: clamp(1.8rem, 4.2vw, 3rem); }
-  .participant-pair:nth-child(even) .participant-card:first-child .participant-portrait { order: 0; }
 }
 
 @media (max-width: 820px) {
@@ -127,7 +125,6 @@ footer strong { color: white; }
   .participant-copy h3 { font-size: clamp(1.5rem, 7vw, 2.25rem); }
   .participant-copy p { margin: 0.65rem 0; font-size: clamp(0.68rem, 2.65vw, 0.84rem); line-height: 1.6; }
   .participant-portrait span { right: 0.5rem; bottom: 0.25rem; font-size: clamp(2.4rem, 14vw, 3.8rem); }
-  .participant-pair:nth-child(even) .participant-card:first-child .participant-portrait { order: 2; }
 }
 
 @media (max-width: 560px) {
@@ -165,5 +162,4 @@ footer strong { color: white; }
   .participant-pair { grid-template-rows: none; }
   .participant-card { grid-template-columns: minmax(0, 1fr); height: auto; }
   .participant-portrait { width: 233.48px; max-width: 100%; height: auto; aspect-ratio: 233.48 / 339; justify-self: center; }
-  .participant-pair:nth-child(even) .participant-card:first-child .participant-portrait { order: 0; }
 }
