@@ -121,8 +121,8 @@ footer strong { color: white; }
   .participant-list { padding-bottom: 3rem; }
   .participant-pair { min-height: 100svh; grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 3rem 1rem; }
   .participant-card:only-child { grid-column: 1; width: 100%; }
-  .participant-card { grid-template-columns: minmax(120px, 0.82fr) minmax(0, 1.18fr); min-height: 0; height: min(42svh, 370px); }
-  .participant-portrait { height: 100%; }
+  .participant-card { grid-template-columns: 233.48px minmax(0, 1fr); min-height: 0; height: 339px; }
+  .participant-portrait { width: 233.48px; height: 339px; }
   .participant-copy { padding: clamp(0.85rem, 4vw, 1.35rem); }
   .participant-copy h3 { font-size: clamp(1.5rem, 7vw, 2.25rem); }
   .participant-copy p { margin: 0.65rem 0; font-size: clamp(0.68rem, 2.65vw, 0.84rem); line-height: 1.6; }
@@ -154,9 +154,16 @@ footer strong { color: white; }
 
 @media (max-width: 420px) {
   .participant-pair { padding-inline: 0.75rem; }
-  .participant-card { grid-template-columns: minmax(102px, 0.72fr) minmax(0, 1.28fr); border-radius: 1rem; }
+  .participant-card { border-radius: 1rem; }
   .participant-copy { padding: 0.75rem; }
   .participant-copy h3 { font-size: clamp(1.35rem, 7.5vw, 1.85rem); }
   .participant-copy p { font-size: clamp(0.64rem, 2.8vw, 0.76rem); line-height: 1.52; }
   .participant-copy i { height: 2px; }
+}
+
+@media (max-width: 320px) {
+  .participant-pair { grid-template-rows: none; }
+  .participant-card { grid-template-columns: minmax(0, 1fr); height: auto; }
+  .participant-portrait { width: 233.48px; max-width: 100%; height: auto; aspect-ratio: 233.48 / 339; justify-self: center; }
+  .participant-pair:nth-child(even) .participant-card:first-child .participant-portrait { order: 0; }
 }
