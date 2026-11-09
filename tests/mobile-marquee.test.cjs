@@ -7,8 +7,10 @@ const vm = require("node:vm");
 test("mobile marquee starts on Safari-style MediaQueryList", () => {
   const frames = [];
   const mediaQueries = [];
+  let actualScrollLeft = 0;
   const marquee = {
-    scrollLeft: 0,
+    get scrollLeft() { return actualScrollLeft; },
+    set scrollLeft(value) { actualScrollLeft = Math.floor(value); },
     addEventListener() {}
   };
   const firstClone = { offsetLeft: 1200 };
@@ -60,6 +62,8 @@ test("mobile marquee starts on Safari-style MediaQueryList", () => {
 
   frames.shift()(1000);
   frames.shift()(1020);
+  frames.shift()(1040);
+  frames.shift()(1060);
   assert.ok(marquee.scrollLeft > 0, "automatic scrolling should advance the photo strip");
   assert.equal(typeof mediaQueries[0].addListener, "function");
 });

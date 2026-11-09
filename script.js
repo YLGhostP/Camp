@@ -77,12 +77,13 @@ function setupMobilePhotoMarquee() {
   const firstClone = track?.querySelector('[aria-hidden="true"]');
   if (!marquee || !track || !firstClone) return;
 
-  const mobileQuery = window.matchMedia("(max-width: 820px), (pointer: coarse)");
+  const mobileQuery = window.matchMedia("(max-width: 820px)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   let animationFrame = 0;
   let resumeTimer = 0;
   let isInteracting = false;
   let lastFrameTime = 0;
+  let scrollPosition = marquee.scrollLeft;
 
   const stop = () => {
     window.cancelAnimationFrame(animationFrame);
@@ -98,11 +99,15 @@ function setupMobilePhotoMarquee() {
 
     if (!isInteracting && document.visibilityState === "visible") {
       const elapsed = lastFrameTime ? Math.min(time - lastFrameTime, 50) : 0;
-      marquee.scrollLeft += elapsed * 0.025;
+      // Keep fractional progress in memory: some mobile browsers round scrollLeft
+      // to whole pixels, discarding small per-frame scroll increments.
+      scrollPosition += elapsed * 0.02;
+      marquee.scrollLeft = scrollPosition;
 
       const loopPoint = firstClone.offsetLeft;
       if (loopPoint > 0 && marquee.scrollLeft >= loopPoint) {
         marquee.scrollLeft -= loopPoint;
+        scrollPosition = marquee.scrollLeft;
       }
     }
 
@@ -131,6 +136,7 @@ function setupMobilePhotoMarquee() {
   const resumeAfterTouch = () => {
     window.clearTimeout(resumeTimer);
     resumeTimer = window.setTimeout(() => {
+      scrollPosition = marquee.scrollLeft;
       isInteracting = false;
       lastFrameTime = 0;
       start();
@@ -148,6 +154,7 @@ function setupMobilePhotoMarquee() {
     } else {
       stop();
       marquee.scrollLeft = 0;
+      scrollPosition = 0;
     }
   });
   listenForMediaChange(reducedMotionQuery, () => {
