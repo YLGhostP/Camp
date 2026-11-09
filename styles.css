@@ -128,7 +128,6 @@ nav a:focus-visible {
 .hero-layer,
 .hero-content,
 .hero-photo-wrap {
-  transform: translate3d(0, var(--parallax-y, 0), 0);
   will-change: transform;
 }
 
@@ -255,7 +254,7 @@ h2 {
   border-radius: 1.5rem;
   background: var(--white);
   box-shadow: 0 40px 100px rgba(11, 42, 74, 0.2);
-  transform: translate3d(0, var(--parallax-y, 0), 0) rotate(3deg);
+  transform: rotate(3deg);
 }
 
 .hero-photo-wrap img {
@@ -506,10 +505,6 @@ footer {
 
 footer strong {
   color: var(--ink);
-}
-
-.reveal {
-  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

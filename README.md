@@ -26,10 +26,11 @@ python -m http.server 8000
 
 ## GitHub Pages 部署
 
-專案已包含 `.github/workflows/deploy.yml`。推送到 GitHub 後：
+此專案不使用自訂 GitHub Actions workflow。推送到 GitHub 後：
 
 1. 開啟儲存庫的 **Settings → Pages**。
-2. 在 **Build and deployment → Source** 選擇 **GitHub Actions**。
-3. 推送到 `main` 後，工作流程會自動發布。
+2. 在 **Build and deployment → Source** 選擇 **Deploy from a branch**。
+3. Branch 選擇 **main**，資料夾選擇 **/(root)**，然後儲存。
+4. 後續推送到 `main` 即會更新網站。
 
 GitHub Free 的 Pages 需使用公開儲存庫。GitHub 官方目前說明：Pages 來源儲存庫建議不超過 1 GB、發布網站不超過 1 GB、每月有 100 GB 軟性流量上限。一般 Git 單檔超過 50 MiB 會警告、100 MiB 會阻擋；從瀏覽器上傳時單檔上限為 25 MiB。
