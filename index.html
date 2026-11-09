@@ -7,22 +7,23 @@
   <meta name="description" content="逃離日常凝聚營：認識每一位參加者，收藏一起跨出的每一步。" />
   <meta name="theme-color" content="#66c9f2" />
   <title>逃離日常｜凝聚營回顧</title>
-  <link rel="pre  connect" href="https://fonts.googleapis.com" />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261109b" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261109c" defer></script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="回到頁首"><span aria-hidden="true">✦</span> 逃離日常</a>
+    <a class="brand" href="#top" aria-label="回到頁首">逃離日常</a>
     <nav aria-label="主要導覽">
       <a href="#participants">參加者</a>
       <a href="#memories">活動照片</a>
@@ -37,7 +38,6 @@
       <div class="hero-layer contour contour-two" data-depth="0.18" aria-hidden="true"></div>
 
       <div class="hero-content" data-depth="0.04">
-        <p class="eyebrow" data-site-kicker>FELLOWSHIP CAMP · 2026</p>
         <h1 id="hero-title" data-site-title>逃離日常</h1>
         <p class="hero-subtitle" data-site-subtitle>多認識一個人，多跨出一步，多留下一段回憶，一起玩，也一起成為更靠近的團契</p>
         <a class="scroll-cue" href="#participants"><span>認識這次同行的人</span><i aria-hidden="true">↓</i></a>
@@ -51,19 +51,17 @@
     <section class="participants" id="participants" aria-labelledby="participants-title">
       <header class="participants-intro section-pad reveal">
         <div>
-          <p class="eyebrow">THE PEOPLE</p>
           <h2 id="participants-title">因為有你們<br />這趟旅程更完整。</h2>
         </div>
         <p>一群願意離開熟悉位置、一起跨出一步的人。</p>
       </header>
 
-      <div class="participant-list" data-participants aria-live="polite"></div>
+      <div class="participant-list" data-participants aria-live="polite" aria-busy="true"></div>
       <p class="load-error" data-load-error hidden>資料載入失敗，請使用本機伺服器或 GitHub Pages 開啟網站。</p>
     </section>
 
     <section class="memories" id="memories" aria-labelledby="memories-title">
       <header class="memories-heading section-pad reveal">
-        <p class="eyebrow">MEMORIES IN MOTION</p>
         <h2 id="memories-title">一起走過的片段，<br />還在繼續往前。</h2>
       </header>
 
@@ -72,7 +70,6 @@
       </div>
 
       <div class="closing section-pad">
-        <p class="eyebrow">ESCAPE THE ORDINARY</p>
         <p>回到日常以後，別忘了我們曾經一起跨出的那一步。</p>
         <a href="#top">再看一次 ↑</a>
       </div>

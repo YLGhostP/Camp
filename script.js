@@ -26,13 +26,11 @@ function groupInPairs(items) {
 }
 
 function renderParticipant(person, index) {
-  const number = String(index + 1).padStart(2, "0");
   const name = person.name ?? "尚未填寫姓名";
   return `
     <article class="participant-card">
       <figure class="participant-portrait">
-        <img src="${escapeHtml(safeImagePath(person.photo, "img/person-placeholder.svg"))}" alt="${escapeHtml(name)}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
-        <span aria-hidden="true">${number}</span>
+        <img src="${escapeHtml(safeImagePath(person.photo, "img/cover.svg"))}" alt="${escapeHtml(name)}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
       </figure>
       <div class="participant-copy">
         <h3>${escapeHtml(name)}</h3>
@@ -48,7 +46,6 @@ function renderSite(data) {
   const participants = Array.isArray(data.participants) ? data.participants : [];
   const activityPhotos = Array.isArray(data.activityPhotos) ? data.activityPhotos : [];
 
-  setText("[data-site-kicker]", site.kicker ?? "FELLOWSHIP CAMP");
   setText("[data-site-title]", site.title ?? "逃離日常");
   setText("[data-site-subtitle]", site.subtitle ?? "多認識一個人，多跨出一步，多留下一段回憶，一起玩，也一起成為更靠近的團契");
   setText("[data-current-year]", new Date().getFullYear());
@@ -56,10 +53,12 @@ function renderSite(data) {
   document.querySelector("[data-site-cover]").src = safeImagePath(site.cover, "img/cover.svg");
 
   let participantIndex = 0;
-  document.querySelector("[data-participants]").innerHTML = groupInPairs(participants).map((pair, pairIndex) => {
+  const participantList = document.querySelector("[data-participants]");
+  participantList.innerHTML = groupInPairs(participants).map((pair, pairIndex) => {
     const cards = pair.map((person) => renderParticipant(person, participantIndex++)).join("");
     return `<section class="participant-pair" aria-label="第 ${pairIndex + 1} 組參加者">${cards}</section>`;
   }).join("");
+  participantList.setAttribute("aria-busy", "false");
 
   const repeatedPhotos = [...activityPhotos, ...activityPhotos];
   document.querySelector("[data-photo-track]").innerHTML = repeatedPhotos.map((photo, index) => `
@@ -152,10 +151,10 @@ function setupGsapAnimations() {
         pairTimeline
           .fromTo(
             cards,
-            { autoAlpha: 0, y: desktop ? 90 : 45, scale: 0.965 },
+            { autoAlpha: 0, y: desktop ? 90 : 45, scale: desktop ? 0.965 : 1 },
             { autoAlpha: 1, y: 0, scale: 1, duration: 0.34, stagger: 0.06, ease: "none" }
           )
-          .to(cards, { autoAlpha: 0.28, y: desktop ? -70 : -35, scale: 0.97, duration: 0.28, stagger: 0.04, ease: "none" }, 0.72);
+          .to(cards, { autoAlpha: 0.28, y: desktop ? -70 : -35, scale: desktop ? 0.97 : 1, duration: 0.28, stagger: 0.04, ease: "none" }, 0.72);
 
         gsap.fromTo(
           portraits,
@@ -206,6 +205,7 @@ async function init() {
     setupGsapAnimations();
   } catch (error) {
     console.error("Unable to load data.json", error);
+    document.querySelector("[data-participants]").setAttribute("aria-busy", "false");
     document.querySelector("[data-load-error]").hidden = false;
   }
 }
