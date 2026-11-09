@@ -30,7 +30,7 @@ function renderParticipant(person, index) {
   return `
     <article class="participant-card">
       <figure class="participant-portrait">
-        <img src="${escapeHtml(safeImagePath(person.photo, "img/cover.svg"))}" alt="${escapeHtml(name)}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
+        <img src="${escapeHtml(safeImagePath(person.photo, "img/cover.jpg"))}" alt="${escapeHtml(name)}的照片" loading="${index < 2 ? "eager" : "lazy"}" />
       </figure>
       <div class="participant-copy">
         <h3>${escapeHtml(name)}</h3>
@@ -50,7 +50,7 @@ function renderSite(data) {
   setText("[data-site-subtitle]", site.subtitle ?? "多認識一個人，多跨出一步，多留下一段回憶，一起玩，也一起成為更靠近的團契");
   setText("[data-current-year]", new Date().getFullYear());
 
-  document.querySelector("[data-site-cover]").src = safeImagePath(site.cover, "img/cover.svg");
+  document.querySelector("[data-site-cover]").src = safeImagePath(site.cover, "img/cover.jpg");
 
   let participantIndex = 0;
   const participantList = document.querySelector("[data-participants]");
@@ -61,9 +61,11 @@ function renderSite(data) {
   participantList.setAttribute("aria-busy", "false");
 
   const repeatedPhotos = [...activityPhotos, ...activityPhotos];
-  document.querySelector("[data-photo-track]").innerHTML = repeatedPhotos.map((photo, index) => `
+  const photoTrack = document.querySelector("[data-photo-track]");
+  photoTrack.style.setProperty("--marquee-duration", `${Math.max(64, activityPhotos.length * 2)}s`);
+  photoTrack.innerHTML = repeatedPhotos.map((photo, index) => `
     <figure class="memory-card" ${index >= activityPhotos.length ? 'aria-hidden="true"' : ""}>
-      <img src="${escapeHtml(safeImagePath(photo.src, "img/memory-01.svg"))}" alt="${index >= activityPhotos.length ? "" : escapeHtml(photo.alt ?? "活動照片")}" loading="lazy" />
+      <img src="${escapeHtml(safeImagePath(photo.src, "img/memory-01.jpg"))}" alt="${index >= activityPhotos.length ? "" : escapeHtml(photo.alt ?? "活動照片")}" loading="lazy" />
       <figcaption>${escapeHtml(photo.caption ?? "活動回憶")}</figcaption>
     </figure>
   `).join("");

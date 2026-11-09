@@ -32,11 +32,6 @@
       "intro": "願意先跨出第一步，也總會回頭問身旁的人要不要一起。"
     },
     {
-      "photo": "img/6.jpg",
-      "name": "郭鈺淳",
-      "intro": "攀岩時最會提供情緒價值，無論還有多遠都會說快到了。"
-    },
-    {
       "photo": "img/7.png",
       "name": "林芷帆",
       "intro": "擅長用一個問題打開話題，讓夜裡的聊天比預想中更長。"
@@ -64,34 +59,199 @@
   ],
   "activityPhotos": [
     {
-      "src": "img/memory-01.svg",
-      "alt": "大家集合準備出發",
-      "caption": "集合，出發"
+      "src": "img/memory-01.jpg",
+      "alt": "營會活動照片 01",
+      "caption": "活動回憶 01"
     },
     {
-      "src": "img/memory-02.svg",
-      "alt": "團隊進行城市尋寶",
-      "caption": "城市尋寶"
+      "src": "img/memory-02.jpg",
+      "alt": "營會活動照片 02",
+      "caption": "活動回憶 02"
     },
     {
-      "src": "img/memory-03.svg",
-      "alt": "大家抵達青年旅舍",
-      "caption": "今晚住這裡"
+      "src": "img/memory-03.jpg",
+      "alt": "營會活動照片 03",
+      "caption": "活動回憶 03"
     },
     {
-      "src": "img/memory-04.svg",
-      "alt": "夜晚的團契聊天時間",
-      "caption": "深夜談心"
+      "src": "img/memory-04.jpg",
+      "alt": "營會活動照片 04",
+      "caption": "活動回憶 04"
     },
     {
-      "src": "img/memory-05.svg",
-      "alt": "參加者一起挑戰攀岩",
-      "caption": "再跨出一步"
+      "src": "img/memory-05.jpg",
+      "alt": "營會活動照片 05",
+      "caption": "活動回憶 05"
     },
     {
-      "src": "img/memory-06.svg",
-      "alt": "活動結束前的大合照",
-      "caption": "我們下次見"
+      "src": "img/memory-06.jpg",
+      "alt": "營會活動照片 06",
+      "caption": "活動回憶 06"
+    },
+    {
+      "src": "img/memory-07.jpg",
+      "alt": "營會活動照片 07",
+      "caption": "活動回憶 07"
+    },
+    {
+      "src": "img/memory-08.jpg",
+      "alt": "營會活動照片 08",
+      "caption": "活動回憶 08"
+    },
+    {
+      "src": "img/memory-09.jpg",
+      "alt": "營會活動照片 09",
+      "caption": "活動回憶 09"
+    },
+    {
+      "src": "img/memory-10.jpg",
+      "alt": "營會活動照片 10",
+      "caption": "活動回憶 10"
+    },
+    {
+      "src": "img/memory-11.jpg",
+      "alt": "營會活動照片 11",
+      "caption": "活動回憶 11"
+    },
+    {
+      "src": "img/memory-12.jpg",
+      "alt": "營會活動照片 12",
+      "caption": "活動回憶 12"
+    },
+    {
+      "src": "img/memory-13.jpg",
+      "alt": "營會活動照片 13",
+      "caption": "活動回憶 13"
+    },
+    {
+      "src": "img/memory-14.jpg",
+      "alt": "營會活動照片 14",
+      "caption": "活動回憶 14"
+    },
+    {
+      "src": "img/memory-15.jpg",
+      "alt": "營會活動照片 15",
+      "caption": "活動回憶 15"
+    },
+    {
+      "src": "img/memory-16.jpg",
+      "alt": "營會活動照片 16",
+      "caption": "活動回憶 16"
+    },
+    {
+      "src": "img/memory-17.jpg",
+      "alt": "營會活動照片 17",
+      "caption": "活動回憶 17"
+    },
+    {
+      "src": "img/memory-18.jpg",
+      "alt": "營會活動照片 18",
+      "caption": "活動回憶 18"
+    },
+    {
+      "src": "img/memory-19.jpg",
+      "alt": "營會活動照片 19",
+      "caption": "活動回憶 19"
+    },
+    {
+      "src": "img/memory-20.jpg",
+      "alt": "營會活動照片 20",
+      "caption": "活動回憶 20"
+    },
+    {
+      "src": "img/memory-21.jpg",
+      "alt": "營會活動照片 21",
+      "caption": "活動回憶 21"
+    },
+    {
+      "src": "img/memory-22.jpg",
+      "alt": "營會活動照片 22",
+      "caption": "活動回憶 22"
+    },
+    {
+      "src": "img/memory-23.jpg",
+      "alt": "營會活動照片 23",
+      "caption": "活動回憶 23"
+    },
+    {
+      "src": "img/memory-24.jpg",
+      "alt": "營會活動照片 24",
+      "caption": "活動回憶 24"
+    },
+    {
+      "src": "img/memory-25.jpg",
+      "alt": "營會活動照片 25",
+      "caption": "活動回憶 25"
+    },
+    {
+      "src": "img/memory-26.jpg",
+      "alt": "營會活動照片 26",
+      "caption": "活動回憶 26"
+    },
+    {
+      "src": "img/memory-27.jpg",
+      "alt": "營會活動照片 27",
+      "caption": "活動回憶 27"
+    },
+    {
+      "src": "img/memory-28.jpg",
+      "alt": "營會活動照片 28",
+      "caption": "活動回憶 28"
+    },
+    {
+      "src": "img/memory-29.jpg",
+      "alt": "營會活動照片 29",
+      "caption": "活動回憶 29"
+    },
+    {
+      "src": "img/memory-30.jpg",
+      "alt": "營會活動照片 30",
+      "caption": "活動回憶 30"
+    },
+    {
+      "src": "img/memory-31.jpg",
+      "alt": "營會活動照片 31",
+      "caption": "活動回憶 31"
+    },
+    {
+      "src": "img/memory-32.jpg",
+      "alt": "營會活動照片 32",
+      "caption": "活動回憶 32"
+    },
+    {
+      "src": "img/memory-33.jpg",
+      "alt": "營會活動照片 33",
+      "caption": "活動回憶 33"
+    },
+    {
+      "src": "img/memory-34.jpg",
+      "alt": "營會活動照片 34",
+      "caption": "活動回憶 34"
+    },
+    {
+      "src": "img/memory-35.jpg",
+      "alt": "營會活動照片 35",
+      "caption": "活動回憶 35"
+    },
+    {
+      "src": "img/memory-36.jpg",
+      "alt": "營會活動照片 36",
+      "caption": "活動回憶 36"
+    },
+    {
+      "src": "img/memory-37.jpg",
+      "alt": "營會活動照片 37",
+      "caption": "活動回憶 37"
+    },
+    {
+      "src": "img/memory-38.jpg",
+      "alt": "營會活動照片 38",
+      "caption": "活動回憶 38"
+    },
+    {
+      "src": "img/memory-39.jpg",
+      "alt": "營會活動照片 39",
+      "caption": "活動回憶 39"
     }
   ]
 }
