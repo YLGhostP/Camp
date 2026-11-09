@@ -263,6 +263,7 @@ h2 {
   aspect-ratio: 5 / 4;
   border-radius: 1.5rem;
   object-fit: cover;
+  object-position: center center;
   opacity: 0.82;
 }
 
@@ -415,8 +416,10 @@ h2 {
   will-change: transform;
 }
 
-.photo-marquee:hover .photo-track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .photo-marquee:hover .photo-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes photos-scroll {
@@ -567,8 +570,10 @@ footer strong {
 
   .hero-photo-wrap {
     top: 13%;
-    right: -18%;
+    right: auto;
+    left: 50%;
     width: 82vw;
+    margin-left: -41vw;
     opacity: 0.65;
   }
 
@@ -584,6 +589,24 @@ footer strong {
   .participants-intro {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .photo-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .photo-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .photo-track {
+    animation: none;
+    transform: none;
   }
 
   .closing {
@@ -675,8 +698,8 @@ footer strong {
 
   .hero-photo-wrap {
     top: 13%;
-    right: -40%;
     width: 118vw;
+    margin-left: -59vw;
   }
 
   .scroll-cue {

@@ -71,6 +71,97 @@ function renderSite(data) {
   `).join("");
 }
 
+function setupMobilePhotoMarquee() {
+  const marquee = document.querySelector(".photo-marquee");
+  const track = document.querySelector("[data-photo-track]");
+  const firstClone = track?.querySelector('[aria-hidden="true"]');
+  if (!marquee || !track || !firstClone) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 820px), (pointer: coarse)");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let animationFrame = 0;
+  let resumeTimer = 0;
+  let isInteracting = false;
+  let lastFrameTime = 0;
+
+  const stop = () => {
+    window.cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+    lastFrameTime = 0;
+  };
+
+  const tick = (time) => {
+    if (!mobileQuery.matches || reducedMotionQuery.matches) {
+      stop();
+      return;
+    }
+
+    if (!isInteracting && document.visibilityState === "visible") {
+      const elapsed = lastFrameTime ? Math.min(time - lastFrameTime, 50) : 0;
+      marquee.scrollLeft += elapsed * 0.025;
+
+      const loopPoint = firstClone.offsetLeft;
+      if (loopPoint > 0 && marquee.scrollLeft >= loopPoint) {
+        marquee.scrollLeft -= loopPoint;
+      }
+    }
+
+    lastFrameTime = time;
+    animationFrame = window.requestAnimationFrame(tick);
+  };
+
+  const start = () => {
+    if (animationFrame || !mobileQuery.matches || reducedMotionQuery.matches) return;
+    animationFrame = window.requestAnimationFrame(tick);
+  };
+
+  const listenForMediaChange = (query, callback) => {
+    if (typeof query.addEventListener === "function") {
+      query.addEventListener("change", callback);
+    } else if (typeof query.addListener === "function") {
+      query.addListener(callback);
+    }
+  };
+
+  const pauseForTouch = () => {
+    window.clearTimeout(resumeTimer);
+    isInteracting = true;
+  };
+
+  const resumeAfterTouch = () => {
+    window.clearTimeout(resumeTimer);
+    resumeTimer = window.setTimeout(() => {
+      isInteracting = false;
+      lastFrameTime = 0;
+      start();
+    }, 700);
+  };
+
+  marquee.addEventListener("pointerdown", pauseForTouch, { passive: true });
+  marquee.addEventListener("pointerup", resumeAfterTouch, { passive: true });
+  marquee.addEventListener("pointercancel", resumeAfterTouch, { passive: true });
+  marquee.addEventListener("touchend", resumeAfterTouch, { passive: true });
+
+  listenForMediaChange(mobileQuery, () => {
+    if (mobileQuery.matches) {
+      start();
+    } else {
+      stop();
+      marquee.scrollLeft = 0;
+    }
+  });
+  listenForMediaChange(reducedMotionQuery, () => {
+    if (reducedMotionQuery.matches) stop();
+    else start();
+  });
+  document.addEventListener("visibilitychange", () => {
+    lastFrameTime = 0;
+    start();
+  });
+
+  start();
+}
+
 function setupGsapAnimations() {
   if (!window.gsap || !window.ScrollTrigger) return;
 
@@ -204,6 +295,7 @@ async function init() {
     const response = await fetch("data.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     renderSite(await response.json());
+    setupMobilePhotoMarquee();
     setupGsapAnimations();
   } catch (error) {
     console.error("Unable to load data.json", error);
